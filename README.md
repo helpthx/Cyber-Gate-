@@ -1,12 +1,14 @@
 # Cyber Gate
 
-<img src="/Imagens/40637444_262471647930542_3437316980447641600_n.jpg" alt="Smiley face" height="300" width="300">
+<p align="center">
+	<img src="/Imagens/40637444_262471647930542_3437316980447641600_n.jpg" alt="Smiley face" height="300" width="300"></p>
 
 # Desenvolvimento de Software - CBL - 2/2018 
 
 ## Resumo
+<p align="justify">
 É cada vez mais importante o uso de controles de acesso aos mais diferentes ambiente, seja para garantir maior segurança, para restringir acesso a informações sigilosas, para assegurar a integridade de bens ou para simples controle de tempo dos usuários do sistema, tornando-se fundamental a utilização de meios eficientes para a realização desta gestão.
-A partir disso foi observado uma grande ineficiência no sistema de controle do Restaurante Universitário da Faculdade do Gama, em que se observa constantes falhas no sistema e filas enormes. Tornando o objetivo do projeto propor uma solução de controle mais eficiente, que gere um sistema capaz de promover maior comodidade aos usuários do restaurante.
+A partir disso foi observado uma grande ineficiência no sistema de controle do Restaurante Universitário da Faculdade do Gama, em que se observa constantes falhas no sistema e filas enormes. Tornando o objetivo do projeto propor uma solução de controle mais eficiente, que gere um sistema capaz de promover maior comodidade aos usuários do restaurante.</p>
 
 ## Equipe
 João Vitor Rodrigues Baptista 	15/0013329
@@ -29,28 +31,37 @@ Inclua o nome de profissionais, especialistas, ou outras pessoas que colaboraram
 Controle de acesso ao Restaurante Universitário da Faculdade do Gama.
 
 ## Essential Questions
-### 1. O que é controle de acesso?
-Em termos de segurança, a expressão controle de acesso e utilizada para referenciar a prática de limitar o acesso a determinado ambiente exclusivamente para um grupo de pessoas que possuam autorização para tal.
 
+### 1. O que é controle de acesso?
+<p align="justify">
+Em termos de segurança, a expressão controle de acesso e utilizada para referenciar a prática de limitar o acesso a determinado ambiente exclusivamente para um grupo de pessoas que possuam autorização para tal.
+</p>
 ### 2. Como são feitos os controles de acesso?
-Os controles de acesso geralmente são feitos através de pessoas (recepcionistas, guardas, seguranças, …), através de meios mecânicos (portões, cancelas, ...) ou por meios eletrónicos (cartões de acesso, biometria, reconhecimento facial, ...).
+<p align="justify">Os controles de acesso geralmente são feitos através de pessoas (recepcionistas, guardas, seguranças, …), através de meios mecânicos (portões, cancelas, ...) ou por meios eletrónicos (cartões de acesso, biometria, reconhecimento facial, ...).</p>
 
 ### 3. Como é o modelo atual de controle de acesso do objeto de estudo?
+<p align="justify">
 É extremamente visível que a adoção de métodos de controle de acesso ao qual se faz necessário o uso de filas, possuem como consequência a obstrução do fluxo de pessoas, acarretando por sua vez um sistema gradativamente mais lento. Tendo como objeto de estudo as filas do Restaurante Universitário (RU) da Faculdade do Gama, onde aliado ao modelo de controle de acesso bastante ineficiente, se somam problemas estruturais como a constante queda do sistema, em que torna necessário o uso de sistema de controle manual, necessitando através de um funcionário a verificação individual da identidade de cada usuário.
+</p>
 
 ### 4. Como funciona o controle de acesso por reconhecimento facial?
+<p align="justify">
 O rosto é composto por medidas únicas, como o comprimento da linha da mandíbula, a distância entre os olhos, o tamanho do crânio, a largura do nariz, etc. Basicamente o sistema de reconhecimento facial realiza o reconhecimento de tais medidas e através de um banco de dados com as informações dos usuários cadastrados é feito o reconhecimento e autenticação. O sistema é composto principalmente por uma câmera (responsável pela captura da imagem do usuário), um microcontrolador (que possui um algoritmo que realizará o processamento e comparação da imagem capturada pela câmera com imagens do banco de dados), um display (utilizado para exibir informações a respeito do funcionamento do dispositivo) e o banco de dados (onde serão armazenadas as informações a respeito dos usuário).
-
+</p>
 ### 5. Quais os principais requisitos para o controle de acesso do Restaurante Universitário?
+<p align="justify">
 Segurança 
 Um dos principais requisitos para o sistema, sendo de caráter fundamental a correta identificação do usuário.
 Disponibilidade 
 O sistema deve permanecer sempre disponível, em caso de haver alguma interrupção ele deve ser restaurado o mais rápido possível.
-Viabilidade
-	O sistema deve ser viável fisicamente e economicamente.
+Viabilidade 
+O sistema deve ser viável fisicamente e economicamente.
+</p>
 
 ## Challenge
+<p align="justify">
 Obter um sistema de controle de acesso mais eficiente para o Restaurante Universitário da Faculdade do Gama utilizando um sistema de reconhecimento facial.
+</p>
 
 ## Guiding Questions
 
@@ -89,9 +100,11 @@ CASSITA, DANIELLE. Reconhecimento facial ajuda polı́cia a identificar suspeito
 CHOWDHURY, Nasimuzzaman. Access Control of Door and Home Security by Raspberry Pi Through Internet. 2018., Disponivel em: https://www.ijser.org/researchpaper/access-control-of-door-and-home-security-by-raspberry-pi-through-internet.pdf i .,Acesso em: 01 set. 2018.
 
 ## Analysis
+<p align="justify">
 Analisar os dados levantados. Demonstrar que as Guiding Questions foram respondidas e que a equipe tem a base necessária para propor a solução.
-
+</p>
 ## Solution
+<p align="justify">
 Muitas vezes é possível propor várias propostas de solução. Isso é bom para ajudar na discussão sobre que idéia melhor resolve o problema, quais as vantagens e desvantagens de cada uma delas.
 Como neste exemplo é um aplicativo móvel, é interessante ter um protótipo de suas telas. Assim, é possível ter uma noção de como o aplicativo vai ficar, auxiliando enormemente na hora de discutir com especialistas.
-
+</p>
