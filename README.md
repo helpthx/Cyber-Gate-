@@ -36,8 +36,10 @@ Controle de acesso ao Restaurante Universitário da Faculdade do Gama.
 <p align="justify">
 Em termos de segurança, a expressão controle de acesso e utilizada para referenciar a prática de limitar o acesso a determinado ambiente exclusivamente para um grupo de pessoas que possuam autorização para tal.
 </p>
+
 ### 2. Como são feitos os controles de acesso?
-<p align="justify">Os controles de acesso geralmente são feitos através de pessoas (recepcionistas, guardas, seguranças, …), através de meios mecânicos (portões, cancelas, ...) ou por meios eletrónicos (cartões de acesso, biometria, reconhecimento facial, ...).</p>
+<p align="justify">
+Os controles de acesso geralmente são feitos através de pessoas (recepcionistas, guardas, seguranças, …), através de meios mecânicos (portões, cancelas, ...) ou por meios eletrónicos (cartões de acesso, biometria, reconhecimento facial, ...). </p>
 
 ### 3. Como é o modelo atual de controle de acesso do objeto de estudo?
 <p align="justify">
@@ -48,9 +50,9 @@ Em termos de segurança, a expressão controle de acesso e utilizada para refere
 <p align="justify">
 O rosto é composto por medidas únicas, como o comprimento da linha da mandíbula, a distância entre os olhos, o tamanho do crânio, a largura do nariz, etc. Basicamente o sistema de reconhecimento facial realiza o reconhecimento de tais medidas e através de um banco de dados com as informações dos usuários cadastrados é feito o reconhecimento e autenticação. O sistema é composto principalmente por uma câmera (responsável pela captura da imagem do usuário), um microcontrolador (que possui um algoritmo que realizará o processamento e comparação da imagem capturada pela câmera com imagens do banco de dados), um display (utilizado para exibir informações a respeito do funcionamento do dispositivo) e o banco de dados (onde serão armazenadas as informações a respeito dos usuário).
 </p>
+
 ### 5. Quais os principais requisitos para o controle de acesso do Restaurante Universitário?
-<p align="justify">
-Segurança 
+<p align="justify"> Segurança 
 Um dos principais requisitos para o sistema, sendo de caráter fundamental a correta identificação do usuário.
 Disponibilidade 
 O sistema deve permanecer sempre disponível, em caso de haver alguma interrupção ele deve ser restaurado o mais rápido possível.
@@ -89,6 +91,7 @@ Obter um sistema de controle de acesso mais eficiente para o Restaurante Univers
 	
 
 ## Guiding Resources
+<p align="justify">
 TIWARI, Shantnu Face Detection in Python Using a Webcam., Disponivel em: https://realpython.com/face-detection-in-python-using-a-webcam/ i ,Acesso em: 01 set.2018.
 
 MJROBOT, MJRoBot. Real-Time Face Recognition: An End-to-End Project., Disponivel em: https://www.hackster.io/mjrobot/real-time-face-recognition-an-end-to-end-project-a10826 i .,Acesso em: 01 set. 2018.
@@ -98,11 +101,13 @@ VICENTIN, TISSIANE. Projeto usa Raspberry e reconhecimento facial para medir pro
 CASSITA, DANIELLE. Reconhecimento facial ajuda polı́cia a identificar suspeito em festival. 2018.,Disponivel em: https://www.tecmundo.com.br/software/133803-reconhecimento-facial-ajuda-policia-identificar-suspeito-festival.htm i .,Acesso em: 01 set. 2018.
 
 CHOWDHURY, Nasimuzzaman. Access Control of Door and Home Security by Raspberry Pi Through Internet. 2018., Disponivel em: https://www.ijser.org/researchpaper/access-control-of-door-and-home-security-by-raspberry-pi-through-internet.pdf i .,Acesso em: 01 set. 2018.
+</p>
 
 ## Analysis
 <p align="justify">
 Analisar os dados levantados. Demonstrar que as Guiding Questions foram respondidas e que a equipe tem a base necessária para propor a solução.
 </p>
+
 ## Solution
 <p align="justify">
 Muitas vezes é possível propor várias propostas de solução. Isso é bom para ajudar na discussão sobre que idéia melhor resolve o problema, quais as vantagens e desvantagens de cada uma delas.
