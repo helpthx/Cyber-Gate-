@@ -85,12 +85,14 @@ Obter um sistema de controle de acesso mais eficiente para o Restaurante Univers
 * Um ambiente onde se possa manter registro de pessoas e de horários de entrada e saıda da mesma para monitoração (servidor);
 
 ### 3. Quais os custo do sistema?
+<p align="justify">
 Os custos vem da parte de hardware do sistema, como o reconhecimento facial depende muito de uma câmera de qualidade, este componente segue a lógica de quanto melhor a câmera melhor a confiabilidade do sistema e aumenta o preço devido ao fato de boas câmeras serem caras. O resto dos componentes tem um preço mais constante já que são específicos e razoavelmente baratos, levando em consideração a implementação do sistema pela Sanoli, responsável pelo RU da UnB, uma empresa bem estabelecida no mercado.
 
 
 | Raspberry Pi 3B | Câmera p/ Raspberry Pi 3B | Display LCD | Módulo Relé | Cabo HDM |   Total  |
 |:---------------:|:-------------------------:|:-----------:|:-----------:|:--------:|:--------:|
-|    R$200-300    |          R$40-300         |   R$89,00   |   R$10,00   |  R$30,00 | R$539,00 |
+|    R$200-300    |          R$40-300         |   R$89,00   |   R$10,00   |  R$30,00 | R$539,00 |</p>
+
 
 ### 4. Como funcionará a instalação do sistema?
 A princípio será desenvolvido um protótipo do projeto que tem o objetivo de demonstrar todas as funcionalidades porém com um número reduzido de usuários cadastrados. 
