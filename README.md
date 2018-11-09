@@ -68,6 +68,8 @@ Obter um sistema de controle de acesso mais eficiente para o Restaurante Univers
 ## Guiding Questions
 
 ### 1. Como será o funcionamento do sistema?
+<p align="justify">Os usuários usarão seus rostos para acessar o sistema do RU. Atualmente esse processo é feito através de diferenciamento de código de barras. O que torna o processo bem arcaico e lento.</p>
+
 
 ### 2. Quais os requisitos para funcionamento do sistema?
 * Um microcontrolador (a escolha da equipe para o projeto é o Raspberry pi 3B);
@@ -83,8 +85,15 @@ Obter um sistema de controle de acesso mais eficiente para o Restaurante Univers
 * Um ambiente onde se possa manter registro de pessoas e de horários de entrada e saıda da mesma para monitoração (servidor);
 
 ### 3. Quais os custo do sistema?
+Os custos vem da parte de hardware do sistema, como o reconhecimento facial depende muito de uma câmera de qualidade, este componente segue a lógica de quanto melhor a câmera melhor a confiabilidade do sistema e aumenta o preço devido ao fato de boas câmeras serem caras. O resto dos componentes tem um preço mais constante já que são específicos e razoavelmente baratos, levando em consideração a implementação do sistema pela Sanoli, responsável pelo RU da UnB, uma empresa bem estabelecida no mercado.
+
+
+| Raspberry Pi 3B | Câmera p/ Raspberry Pi 3B | Display LCD | Módulo Relé | Cabo HDM |   Total  |
+|:---------------:|:-------------------------:|:-----------:|:-----------:|:--------:|:--------:|
+|    R$200-300    |          R$40-300         |   R$89,00   |   R$10,00   |  R$30,00 | R$539,00 |
 
 ### 4. Como funcionará a instalação do sistema?
+A princípio será desenvolvido um protótipo do projeto que tem o objetivo de demonstrar todas as funcionalidades porém com um número reduzido de usuários cadastrados. 
 
 
 ## Guiding Activities
@@ -105,11 +114,12 @@ CHOWDHURY, Nasimuzzaman. Access Control of Door and Home Security by Raspberry P
 
 ## Analysis
 <p align="justify">
-Analisar os dados levantados. Demonstrar que as Guiding Questions foram respondidas e que a equipe tem a base necessária para propor a solução.
+Após estudar o tema proposto e entender melhor o problema levantado, e diversas questões relacionadas existiu uma melhor visão do problema, o que fez existir diversas opiniões de pontos que poderiam ser observados ou mesmo trabalhados para a solução do mesmo, desde formas de identificação tal como servidores e a eletrônica vinculada em hardware para o sistema.
 </p>
 
 ## Solution
 <p align="justify">
-Muitas vezes é possível propor várias propostas de solução. Isso é bom para ajudar na discussão sobre que idéia melhor resolve o problema, quais as vantagens e desvantagens de cada uma delas.
-Como neste exemplo é um aplicativo móvel, é interessante ter um protótipo de suas telas. Assim, é possível ter uma noção de como o aplicativo vai ficar, auxiliando enormemente na hora de discutir com especialistas.
+Como foco principal de solução é de fato a implementação de um sistema de reconhecimento facial, com um servidor online para a verificação de usuários e registro de créditos. Porém as soluções de contorno foram feitas em torno de um mesmo problema de controle de acesso, por tanto existiu-se o debate sobre a melhor forma de reconhecimento(Facial, código de barras(meio usado atualmente), RFID, QR codes entre outros.).
+A criação de servidores foi também de fato trabalhada sobre qual melhor jeito para se armazenar informações seja em memoria interna do dispositivo, ou em um servidor online. Questões essas que levaram a escolha da solução abordada para o desenvolvimento da solução escolhida para a prototipagem e desenvolvimento: O uso do reconhecimento facial 
+
 </p>
