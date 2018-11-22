@@ -10,7 +10,7 @@ import os
 
 
 def criar_tabela():
-	conn = sqlite3.connect('Banco_de_dados.db')
+	conn = sqlite3.connect('/home/pi/Banco_de_dados.db')
 	print('\nBanco aberto com sucesso...');
 
 	conn.execute('''CREATE TABLE CADASTROS
@@ -24,10 +24,11 @@ def criar_tabela():
 	print('Tabela criada com sucesso...');
 	print('\n')
 	conn.close()
+	os.system('sudo chmod 777 /home/pi/Banco_de_dados.db')
 	sys.exit(1)
 
 def recarregar_ru():
-	conn = sqlite3.connect('Banco_de_dados.db')
+	conn = sqlite3.connect('/home/pi/Banco_de_dados.db')
 	print('\nBanco aberto com sucesso...');
 	
 	matricula = input('Qual a matricula ?:  ')
@@ -47,7 +48,7 @@ def recarregar_ru():
 	sys.exit(1)
 
 def contador_acessos():
-	conn = sqlite3.connect('Banco_de_dados.db')
+	conn = sqlite3.connect('/home/pi/Banco_de_dados.db')
 	print('\nBanco aberto com sucesso...');
 	print('---------------------------')
 	MATRICULA1 = input('Digite a matricula: ')

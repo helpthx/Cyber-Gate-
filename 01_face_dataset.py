@@ -1,11 +1,13 @@
 ''''
 Capture multiple Faces from multiple users to be stored on a DataBase (dataset directory)
-	==> Faces will be stored on a directory: dataset/ (if does not exist, pls create one)
-	==> Each face will have a unique numeric integer ID as 1, 2, 3, etc                       
+    ==> Faces will be stored on a directory: dataset/ (if does not exist, pls create one)
+    ==> Each face will have a unique numeric integer ID linked with a SQLite3 database call Banco_de_dados.db
+    ==> Each ID has a name, matricula, amount of credit in RU and acessos.
+
 
 Based on original code by Anirban Kar: https://github.com/thecodacus/Face-Recognition    
 
-Developed by Marcelo Rovai - MJRoBot.org @ 21Feb18    
+Developed by João Vitor Rodrigues Baptista. 
 
 '''
 
@@ -13,13 +15,18 @@ import cv2
 import os
 import sqlite3
 
+'''
+==> Path to convert the database in lists, cos we need a list's ID to link the database and the dataset.
+
+'''
+
 id_list = []
 name_list = []
 matricula_list = []
 ru_list = []
 acessos_list = []
 data = []
-conn = sqlite3.connect('Banco_de_dados.db')
+conn = sqlite3.connect('/home/pi/Banco_de_dados.db')
 print ('\nBanco aberto com sucesso...');
 
 cursor = conn.execute("SELECT ID, NOME, MATRICULA, RU, ACESSOS from CADASTROS")
@@ -70,7 +77,7 @@ while(True):
     k = cv2.waitKey(100) & 0xff # Press 'ESC' for exiting video
     if k == 27:
         break
-    elif count >= 50: # Take 30 face sample and stop video
+    elif count >= 40: # Take 30 face sample and stop video
          break
 
 # Do a bit of cleanup
