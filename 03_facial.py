@@ -148,12 +148,6 @@ class Ui_Monitor(object):
 "</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><img src=\"/home/pi/Interface/cortado.png\" /></p></body></html>", None))
 
-
-
-
-
-
-
 '''
 ==> Path to convert the database in lists, cos we need a list's ID to link the database and the dataset.
 '''
@@ -188,9 +182,6 @@ font = cv2.FONT_HERSHEY_SIMPLEX
 #iniciate id counter
 id = 0
 
-# names related to ids: example ==> Marcelo: id=1,  etc
-#namelist = ['None', 'Mito', 'Paula', 'Ilza', 'Z', 'W'] 
-
 # Initialize and start realtime video capture
 cam = cv2.VideoCapture(0)
 cam.set(3, 640) # set video widht
@@ -199,8 +190,9 @@ cam.set(4, 480) # set video height
 # Define min window size to be recognized as a face
 minW = 0.1*cam.get(3)
 minH = 0.1*cam.get(4)
-t = 0
-#import sys
+
+#Inicia a interface grafica de acompanhamento
+
 sair = 1 
 app = QtGui.QApplication(sys.argv)
 Monitor = QtGui.QMainWindow()
@@ -214,12 +206,14 @@ iniciar = 0
 ui = Ui_Monitor()
 ui.setupUi(Monitor)
 Monitor.show()
+
+#Variaveis de temporalização e confirmação de faces
+t = 0
 v = 0
 
+#Loop principal da aplicação.
 while True:
    
-      
-    #time.sleep(1)
     ret, img =cam.read()
     img = cv2.flip(img, 1) # Flip vertically
 
@@ -234,6 +228,7 @@ while True:
 
     for(x,y,w,h) in faces:
         
+        #atualização real-time do banco
         id_list = []
         name_list = []
         matricula_list = []
@@ -241,8 +236,7 @@ while True:
         acessos_list = []
         data = []
         conn = sqlite3.connect('/home/pi/Banco_de_dados.db')
-        #print ('Banco aberto com sucesso...');
-
+       
         cursor = conn.execute("SELECT ID, NOME, MATRICULA, RU, ACESSOS from CADASTROS")
         for row in cursor:
             id_list.append(int(row[0]))
@@ -251,7 +245,6 @@ while True:
             ru_list.append(float(row[3]))
             acessos_list.append(int(row[4]))
 
-        #print("Operação feita com sucesso...");
         conn.close()   
 
         cv2.rectangle(img, (x,y), (x+w,y+h), (0,255,0), 2)
@@ -259,8 +252,10 @@ while True:
         id, confidence = recognizer.predict(gray[y:y+h,x:x+w])
         
         # Check if confidence is less them 100 ==> "0" is perfect match
-        if (confidence < 35):
+        if (confidence < 30): #confiabilidade de 70% em cada match de imagem
             cv2.rectangle(img, (x,y), (x+w,y+h), (0,255,0), 2)
+            
+            #conversão de valores do banco para a aplicação
             nome = name_list[id]
             numb_acessos = acessos_list[id]
             credito = ru_list[id]
@@ -269,10 +264,9 @@ while True:
             dinheiro = str(credito_1)
             id = matricula_list[id]
             confidence = "  {0}%".format(round(100 - confidence))
-            time.sleep(0.01)
+            
             cv2.rectangle(img, (x,y), (x+w,y+h), (0,255,0), 2)
             id = 'Acesso permitido'
-            #time.sleep(0.5)
             iniciar = 1
             sem_credito = 0
             numero_acessos = numb_acessos
@@ -281,47 +275,44 @@ while True:
             ui.setupUi(Monitor)
             Monitor.show()
             v = v + 1
-            #time.sleep(2)
+            
+            #condição em que o usuario terá acesso ao restaurante
             if (t == 10 and credito_1 >= 0.0 and numero_acessos == 0):
-                #time.sleep(0.01)
                 cv2.rectangle(img, (x,y), (x+w,y+h), (0,255,0), 2)
                 id = 'Acesso permitido'
-                #time.sleep(0.5)
                 iniciar = 1
                 sem_credito = 0
                 numero_acessos = 0
-                             
                 ui = Ui_Monitor()
                 ui.setupUi(Monitor)
                 Monitor.show()
                 print('To aqui ',v)
-                #time.sleep(1)
+                
+                #Temporalização para travar a tela de monitoramento e abrir o GPIO da placa
                 if(v == 12):
-                    cv2.rectangle(img, (x,y), (x+w,y+h), (0,255,0), 2)
+                    cv2.rectangle(img, (x,y), (x+w,y+h), (0,255,0), 2) #Verde
                     id = 'Acesso permitido'
-                    #time.sleep(0.5)
                     iniciar = 1
                     sem_credito = 0
                     numero_acessos = 0
-                                 
                     ui = Ui_Monitor()
                     ui.setupUi(Monitor)
                     Monitor.show()
                     
+                    #Printar no console as informações que serão gravas como logs
                     print('Bem Vindo ', nome)
                     print('Matricula: ', matricula)
                     print('Creditos restantes: ', credito_1)
                     print('\n')
                     
-                    #time.sleep(0.25)
+                    #Abertura do rele
                     os.system("sudo ./gpio")
                     t = 0
                     v = 0
-                #time.sleep(3)
+            
+            #Condição em que o usuario não terá creditos suficientes para acessar o restaurante.
             elif(t == 10 and credito_1 < 0.0):
-                #time.sleep(1)
-                cv2.rectangle(img, (x,y), (x+w,y+h), (0,0,255), 2)
-                #time.sleep(3)
+                cv2.rectangle(img, (x,y), (x+w,y+h), (0,0,255), 2) #Vermelho
                 id = 'Sem creditos...'
                 iniciar = 1
                 sem_credito = 1
@@ -330,22 +321,25 @@ while True:
                 ui = Ui_Monitor()
                 ui.setupUi(Monitor)
                 Monitor.show()
-                if(v == 12):
                 
+                #Temporalização para travar a tela de monitoramento
+                if(v == 12):
+                    
+                    #Printar no console as informações que serão gravas como logs
                     print('Sem saldo ', nome)
                     print('Matricula: ', matricula)
                     print('Creditos restantes: ', credito_1)
                     print('Creditos: ', credito)
                     print('\n')
+                    
+                    #tempo de permanencia da tela de monitoramento 
                     time.sleep(3)
-                    #time.sleep(1)
                     t = 0
                     v = 0
             
+            #Condição em que o usuario tentou acessar mais vezes que o permitido no restaurante.
             elif(t == 10 and numero_acessos != 0):
-                #time.sleep(1)
-                cv2.rectangle(img, (x,y), (x+w,y+h), (0,165,255), 2)
-                #time.sleep(3)
+                cv2.rectangle(img, (x,y), (x+w,y+h), (0,165,255), 2) #laranjado
                 id = 'Numeros de acessos expirados..'
                 iniciar = 1
                 sem_credito = 0
@@ -354,17 +348,21 @@ while True:
                 ui = Ui_Monitor()
                 ui.setupUi(Monitor)
                 Monitor.show()
-                if(v == 12):
                 
+                #Temporalização para travar a tela de monitoramento
+                if(v == 12):
+                    
+                    #Printar no console as informações que serão gravas como logs
                     print('Numeros de acessos expirados... ', nome)
                     print('Matricula: ', matricula)
-                    #print('Creditos restantes: ', credito_1)
-                    #print('Creditos: ', credito)
                     print('\n')
+                    
+                    #tempo de permanencia da tela de monitoramento 
                     time.sleep(3)
-                    #time.sleep(1)
                     t = 0
                     v = 0
+                    
+            #Condição de incremento de identificação        
             else:
                 cv2.rectangle(img, (x,y), (x+w,y+h), (0,255,255), 2) #Amarelo
                 id = 'Identificando rosto...'
@@ -379,15 +377,13 @@ while True:
                 ui = Ui_Monitor()
                 ui.setupUi(Monitor)
                 Monitor.show()
-                #confidence = "  {0}%".format(round(100 - confidence))
                 t = t + 1
                 
-                
-        elif (confidence < 65):
+        #confiabilidade menor do que 70% em cada match de imagem       
+        elif (confidence < 70):
             cv2.rectangle(img, (x,y), (x+w,y+h), (0,0,255), 2)
             id = 'Desconhecido'
             confidence = "  {0}%".format(round(100 - confidence))
-            #iniciar = 0
             nome = "Aluno"
             matricula = "Matricula"
             dinheiro = "00"
@@ -398,9 +394,8 @@ while True:
             ui = Ui_Monitor()
             ui.setupUi(Monitor)
             Monitor.show()
-            
-            
-            
+        
+        #error de frame e resete da interface de monitoramento.
         else:
             cv2.rectangle(img, (x,y), (x+w,y+h), (0,0,255), 2)
             id = 'Erro de captura'
