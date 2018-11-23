@@ -151,6 +151,9 @@ class Ui_Monitor(object):
 
 
 
+
+
+
 '''
 ==> Path to convert the database in lists, cos we need a list's ID to link the database and the dataset.
 '''
@@ -211,6 +214,7 @@ iniciar = 0
 ui = Ui_Monitor()
 ui.setupUi(Monitor)
 Monitor.show()
+v = 0
 
 while True:
    
@@ -254,47 +258,69 @@ while True:
 
         id, confidence = recognizer.predict(gray[y:y+h,x:x+w])
         
-
-        # Check if confidence is less them 100 ==> "0" is perfect match 
+        # Check if confidence is less them 100 ==> "0" is perfect match
         if (confidence < 35):
             cv2.rectangle(img, (x,y), (x+w,y+h), (0,255,0), 2)
             nome = name_list[id]
+            numb_acessos = acessos_list[id]
             credito = ru_list[id]
             matricula = str(matricula_list[id])
             credito_1 = credito - 5.20
             dinheiro = str(credito_1)
             id = matricula_list[id]
             confidence = "  {0}%".format(round(100 - confidence))
-            #t = t + 1
             time.sleep(0.01)
-            if (t == 10 and credito_1 >= 0.0):
-                time.sleep(0.01)
+            cv2.rectangle(img, (x,y), (x+w,y+h), (0,255,0), 2)
+            id = 'Acesso permitido'
+            #time.sleep(0.5)
+            iniciar = 1
+            sem_credito = 0
+            numero_acessos = numb_acessos
+                             
+            ui = Ui_Monitor()
+            ui.setupUi(Monitor)
+            Monitor.show()
+            v = v + 1
+            #time.sleep(2)
+            if (t == 10 and credito_1 >= 0.0 and numero_acessos == 0):
+                #time.sleep(0.01)
                 cv2.rectangle(img, (x,y), (x+w,y+h), (0,255,0), 2)
                 id = 'Acesso permitido'
-                time.sleep(0.5)
+                #time.sleep(0.5)
                 iniciar = 1
                 sem_credito = 0
-                #nome = input("Digite um nome para entrar: ")
-                #matricula = input("Digite uma matricula para entrar: ")
-                #dinheiro = input("Digite uma quantidade de dinheiro: ")
-                #sair = input("Deseja sair 1 ou 0 ?")
                 numero_acessos = 0
-                dinheiro_flt = float(credito_1)
+                             
                 ui = Ui_Monitor()
                 ui.setupUi(Monitor)
-                #Monitor.show()
-                time.sleep(3)
-                print('Bem Vindo ', nome)
-                print('Matricula: ', matricula)
-                print('Creditos restantes: ', credito_1)
-                print('\n')
-                
-                #time.sleep(0.25)
-                os.system("sudo ./gpio")
-                t = 0
+                Monitor.show()
+                print('To aqui ',v)
+                #time.sleep(1)
+                if(v == 12):
+                    cv2.rectangle(img, (x,y), (x+w,y+h), (0,255,0), 2)
+                    id = 'Acesso permitido'
+                    #time.sleep(0.5)
+                    iniciar = 1
+                    sem_credito = 0
+                    numero_acessos = 0
+                                 
+                    ui = Ui_Monitor()
+                    ui.setupUi(Monitor)
+                    Monitor.show()
+                    
+                    print('Bem Vindo ', nome)
+                    print('Matricula: ', matricula)
+                    print('Creditos restantes: ', credito_1)
+                    print('\n')
+                    
+                    #time.sleep(0.25)
+                    os.system("sudo ./gpio")
+                    t = 0
+                    v = 0
+                #time.sleep(3)
             elif(t == 10 and credito_1 < 0.0):
                 #time.sleep(1)
-                cv2.rectangle(img, (x,y), (x+w,y+h), (144,255,0), 2)
+                cv2.rectangle(img, (x,y), (x+w,y+h), (0,0,255), 2)
                 #time.sleep(3)
                 id = 'Sem creditos...'
                 iniciar = 1
@@ -304,15 +330,41 @@ while True:
                 ui = Ui_Monitor()
                 ui.setupUi(Monitor)
                 Monitor.show()
+                if(v == 12):
                 
-                print('Sem saldo ', nome)
-                print('Matricula: ', matricula)
-                print('Creditos restantes: ', credito_1)
-                print('Creditos: ', credito)
-                print('\n')
-                time.sleep(3)
+                    print('Sem saldo ', nome)
+                    print('Matricula: ', matricula)
+                    print('Creditos restantes: ', credito_1)
+                    print('Creditos: ', credito)
+                    print('\n')
+                    time.sleep(3)
+                    #time.sleep(1)
+                    t = 0
+                    v = 0
+            
+            elif(t == 10 and numero_acessos != 0):
                 #time.sleep(1)
-                t = 0
+                cv2.rectangle(img, (x,y), (x+w,y+h), (0,165,255), 2)
+                #time.sleep(3)
+                id = 'Numeros de acessos expirados..'
+                iniciar = 1
+                sem_credito = 0
+                numero_acessos = 1
+                dinheiro_flt = float(credito_1)
+                ui = Ui_Monitor()
+                ui.setupUi(Monitor)
+                Monitor.show()
+                if(v == 12):
+                
+                    print('Numeros de acessos expirados... ', nome)
+                    print('Matricula: ', matricula)
+                    #print('Creditos restantes: ', credito_1)
+                    #print('Creditos: ', credito)
+                    print('\n')
+                    time.sleep(3)
+                    #time.sleep(1)
+                    t = 0
+                    v = 0
             else:
                 cv2.rectangle(img, (x,y), (x+w,y+h), (0,255,255), 2) #Amarelo
                 id = 'Identificando rosto...'
