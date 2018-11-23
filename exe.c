@@ -22,6 +22,7 @@ int main(){
 	printf("1 -> Novo Cadastro; 2 -> Reconhecimento; 3 -> Modos de alterações; 4 -> Sair:\n");
 	printf("----------------------------------------------------------------------------\n");
 	scanf("%d", &numb_int);
+	system("sudo modprobe bcm2835-v4l2");
 	system("clear");
 
 	/* main process */
