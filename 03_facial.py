@@ -1,7 +1,5 @@
 ''''
 Real Time Face Recogition
-    ==> Each face stored on dataset/ dir, should have a unique numeric integer ID linked with some infos in "Banco_de_dados.db".                       
-    ==> LBPH computed model (trained faces) should be on trainer
 Based on original code by Anirban Kar: https://github.com/thecodacus/Face-Recognition    
 Developed by João Vitor Rodrigues Baptista  
 '''
@@ -17,6 +15,10 @@ from PyQt4 import QtCore, QtGui
 import time
 import sys
 
+
+'''
+Parte da interface grafica integrada no codigo
+'''
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -148,8 +150,10 @@ class Ui_Monitor(object):
 "</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><img src=\"/home/pi/Interface/cortado.png\" /></p></body></html>", None))
 
+        
+        
 '''
-==> Path to convert the database in lists, cos we need a list's ID to link the database and the dataset.
+ Para para acessar o database e o dataset atraves de conversão de valores para listas
 '''
 
 id_list = []
@@ -179,15 +183,15 @@ faceCascade = cv2.CascadeClassifier(cascadePath);
 
 font = cv2.FONT_HERSHEY_SIMPLEX
 
-#iniciate id counter
+#Contador inicial
 id = 0
 
-# Initialize and start realtime video capture
+# Iniciar e começa a video captura de tempo-real
 cam = cv2.VideoCapture(0)
 cam.set(3, 640) # set video widht
 cam.set(4, 480) # set video height
 
-# Define min window size to be recognized as a face
+# Definir o tamanho minino do quadrado que será usado para reconhecer o rosto
 minW = 0.1*cam.get(3)
 minH = 0.1*cam.get(4)
 
@@ -246,7 +250,8 @@ while True:
             acessos_list.append(int(row[4]))
 
         conn.close()   
-
+        
+        # Iniciação do retangulo de reconhecimento 
         cv2.rectangle(img, (x,y), (x+w,y+h), (0,255,0), 2)
 
         id, confidence = recognizer.predict(gray[y:y+h,x:x+w])
@@ -410,8 +415,8 @@ while True:
     if k == 27:
         break
 
-# Do a bit of cleanup
-#print("\n [INFO] Exiting Program and cleanup stuff")
+# Limpar as telas quando sair
+
 cam.release()
 cv2.destroyAllWindows()
 sys.exit(app.exec_())
