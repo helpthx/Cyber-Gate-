@@ -10,6 +10,19 @@
 
 int main(){
 	int x = 1;
+	printf("------------------------------------\n");
+	printf("Para acessar remotamente o servidor!\n");
+	printf("Esse é o endereço de ip acessável\n");
+	system("hostname -I");
+	printf("Use:\n");
+	printf("https//xxx.xxx.xxx.xxx/index/index/.html\n");
+	printf("ou\n");
+	printf("https//xxx.xxx.xxx.xxx/index\n");
+	printf("------------------------------------\n");
+	printf("Ativando a camera pi\n");
+	system("sudo modprobe bcm2835-v4l2");
+	printf("------------------------------------\n");
+		 
 	 
 	do
 	{
@@ -22,7 +35,7 @@ int main(){
 	printf("1 -> Novo Cadastro; 2 -> Reconhecimento; 3 -> Modos de alterações; 4 -> Sair:\n");
 	printf("----------------------------------------------------------------------------\n");
 	scanf("%d", &numb_int);
-	system("sudo modprobe bcm2835-v4l2");
+	//system("sudo modprobe bcm2835-v4l2");
 	system("clear");
 
 	/* main process */
