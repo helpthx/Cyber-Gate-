@@ -322,6 +322,32 @@ while True:
 
                     print('\n')
                     conn.close()
+                    
+                    #Criando o arquivo de logs
+                    now = datetime.now()
+                    arq = open('/home/pi/Arquivos/Logs/acessos.txt', 'a')
+                    data = []
+                    data.append('\n-------------------------\n')
+                    data.append("Data: ")
+                    data.append(str(now.year))
+                    data.append(':')
+                    data.append(str(now.month))
+                    data.append(':')
+                    data.append(str(now.day))
+                    data.append(':')
+                    data.append(str(now.hour))
+                    data.append(':')
+                    data.append(str(now.minute))
+                    data.append(':')
+                    data.append(str(now.second))
+                    data.append(str('\nBem vindo: '+nome))
+                    data.append(str('\nMatricula: '+matricula))
+                    data.append('\nCreditos restantes: '+str(credito_1))
+                    data.append('\nCreditos antes: '+str(credito))
+                    data.append('\n------------------------\n')
+                    arq.writelines(data)
+                    arq.close()
+
                                       
                     
                     #Abertura do rele
@@ -352,6 +378,31 @@ while True:
                     print('Creditos: ', credito)
                     print('\n')
                     
+                    #Criando o arquivo de logs
+                    now = datetime.now()
+                    arq = open('/home/pi/Arquivos/Logs/acessos.txt', 'a')
+                    data = []
+                    data.append('\n-------------------------\n')
+                    data.append("Data: ")
+                    data.append(str(now.year))
+                    data.append(':')
+                    data.append(str(now.month))
+                    data.append(':')
+                    data.append(str(now.day))
+                    data.append(':')
+                    data.append(str(now.hour))
+                    data.append(':')
+                    data.append(str(now.minute))
+                    data.append(':')
+                    data.append(str(now.second))
+                    data.append(str('\nBem vindo: '+nome))
+                    data.append(str('\nMatricula: '+matricula))
+                    data.append('\nCreditos restantes: '+str(credito_1))
+                    data.append('\nCreditos antes: '+str(credito))
+                    data.append('\n------------------------\n')
+                    arq.writelines(data)
+                    arq.close()
+                    
                     #tempo de permanencia da tela de monitoramento 
                     time.sleep(5)
                     t = 0
@@ -376,6 +427,31 @@ while True:
                     print('Numeros de acessos expirados... ', nome)
                     print('Matricula: ', matricula)
                     print('\n')
+                    
+                    #Criando o arquivo de logs
+                    now = datetime.now()
+                    arq = open('/home/pi/Arquivos/Logs/acessos.txt', 'a')
+                    data = []
+                    data.append('\n-------------------------\n')
+                    data.append("Data: ")
+                    data.append(str(now.year))
+                    data.append(':')
+                    data.append(str(now.month))
+                    data.append(':')
+                    data.append(str(now.day))
+                    data.append(':')
+                    data.append(str(now.hour))
+                    data.append(':')
+                    data.append(str(now.minute))
+                    data.append(':')
+                    data.append(str(now.second))
+                    data.append(str('\nBem vindo: '+nome))
+                    data.append(str('\nMatricula: '+matricula))
+                    data.append('\nCreditos restantes: '+str(credito_1))
+                    data.append('\nCreditos antes: '+str(credito))
+                    data.append('\n------------------------\n')
+                    arq.writelines(data)
+                    arq.close()
                     
                     #tempo de permanencia da tela de monitoramento 
                     time.sleep(5)
