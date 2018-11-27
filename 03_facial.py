@@ -257,7 +257,7 @@ while True:
         id, confidence = recognizer.predict(gray[y:y+h,x:x+w])
         
         # Check if confidence is less them 100 ==> "0" is perfect match
-        if (confidence < 30): #confiabilidade de 70% em cada match de imagem
+        if (confidence < 31): #confiabilidade de 70% em cada match de imagem
             cv2.rectangle(img, (x,y), (x+w,y+h), (0,255,0), 2)
             
             #conversão de valores do banco para a aplicação
@@ -265,7 +265,7 @@ while True:
             numb_acessos = acessos_list[id]
             credito = ru_list[id]
             matricula = str(matricula_list[id])
-            credito_1 = credito - 5.20
+            credito_1 = round(credito - 5.20, 2)
             dinheiro = str(credito_1)
             id = matricula_list[id]
             confidence = "  {0}%".format(round(100 - confidence))
@@ -282,7 +282,7 @@ while True:
             v = v + 1
             
             #condição em que o usuario terá acesso ao restaurante
-            if (t == 10 and credito_1 >= 0.0 and numero_acessos == 0):
+            if (t == 3 and credito_1 >= 0.0 and numero_acessos == 0):
                 cv2.rectangle(img, (x,y), (x+w,y+h), (0,255,0), 2)
                 id = 'Acesso permitido'
                 iniciar = 1
@@ -291,10 +291,9 @@ while True:
                 ui = Ui_Monitor()
                 ui.setupUi(Monitor)
                 Monitor.show()
-                print('To aqui ',v)
-                
+                                
                 #Temporalização para travar a tela de monitoramento e abrir o GPIO da placa
-                if(v == 12):
+                if(v == 5):
                     cv2.rectangle(img, (x,y), (x+w,y+h), (0,255,0), 2) #Verde
                     id = 'Acesso permitido'
                     iniciar = 1
@@ -310,13 +309,29 @@ while True:
                     print('Creditos restantes: ', credito_1)
                     print('\n')
                     
+                    #Atualização do banco de dados
+                    conn = sqlite3.connect('/home/pi/Banco_de_dados.db')
+                    conn.execute("UPDATE CADASTROS set RU = " +str(round(credito_1, 2))+ " WHERE  MATRICULA = "+ str(matricula));
+                    conn.execute('UPDATE CADASTROS set ACESSOS = ACESSOS+1 WHERE  MATRICULA='+str(matricula));
+                    conn.commit()
+                    print('\nNumero total de colunas atualizadas: ', conn.total_changes)
+                    if conn.total_changes > 0:
+                            print('Alterado com sucesso...')
+                    else:
+                            print('Alguma operação deu errado...')
+
+                    print('\n')
+                    conn.close()
+                                      
+                    
                     #Abertura do rele
+                    #time.sleep(5)
                     os.system("sudo ./gpio")
                     t = 0
                     v = 0
             
             #Condição em que o usuario não terá creditos suficientes para acessar o restaurante.
-            elif(t == 10 and credito_1 < 0.0):
+            elif(t == 3 and credito_1 < 0.0):
                 cv2.rectangle(img, (x,y), (x+w,y+h), (0,0,255), 2) #Vermelho
                 id = 'Sem creditos...'
                 iniciar = 1
@@ -328,7 +343,7 @@ while True:
                 Monitor.show()
                 
                 #Temporalização para travar a tela de monitoramento
-                if(v == 12):
+                if(v == 5):
                     
                     #Printar no console as informações que serão gravas como logs
                     print('Sem saldo ', nome)
@@ -338,12 +353,12 @@ while True:
                     print('\n')
                     
                     #tempo de permanencia da tela de monitoramento 
-                    time.sleep(3)
+                    time.sleep(5)
                     t = 0
                     v = 0
             
             #Condição em que o usuario tentou acessar mais vezes que o permitido no restaurante.
-            elif(t == 10 and numero_acessos != 0):
+            elif(t == 3 and numero_acessos != 0):
                 cv2.rectangle(img, (x,y), (x+w,y+h), (0,165,255), 2) #laranjado
                 id = 'Numeros de acessos expirados..'
                 iniciar = 1
@@ -355,7 +370,7 @@ while True:
                 Monitor.show()
                 
                 #Temporalização para travar a tela de monitoramento
-                if(v == 12):
+                if(v == 5):
                     
                     #Printar no console as informações que serão gravas como logs
                     print('Numeros de acessos expirados... ', nome)
@@ -363,7 +378,7 @@ while True:
                     print('\n')
                     
                     #tempo de permanencia da tela de monitoramento 
-                    time.sleep(3)
+                    time.sleep(5)
                     t = 0
                     v = 0
                     
@@ -385,7 +400,7 @@ while True:
                 t = t + 1
                 
         #confiabilidade menor do que 70% em cada match de imagem       
-        elif (confidence < 70):
+        elif (confidence < 69):
             cv2.rectangle(img, (x,y), (x+w,y+h), (0,0,255), 2)
             id = 'Desconhecido'
             confidence = "  {0}%".format(round(100 - confidence))
@@ -399,12 +414,16 @@ while True:
             ui = Ui_Monitor()
             ui.setupUi(Monitor)
             Monitor.show()
+            t = 0
+            v = 0
         
         #error de frame e resete da interface de monitoramento.
         else:
             cv2.rectangle(img, (x,y), (x+w,y+h), (0,0,255), 2)
             id = 'Erro de captura'
             confidence = "  {0}%".format(round(100 - confidence))
+            t = 0
+            v = 0
         
         cv2.putText(img, str(id), (x+5,y-5), font, 1, (255,255,255), 2)
         cv2.putText(img, str(confidence), (x+5,y+h-5), font, 1, (255,255,0), 1)  
