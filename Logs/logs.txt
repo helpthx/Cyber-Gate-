@@ -1,0 +1,14 @@
+
+-------------------------
+Data: 2018:11:26:23:24:32
+Bem vind: João Vitor Rodrigues Baptista
+Matricula: 150013329
+Creditos restantes: 36.4
+------------------------
+
+-------------------------
+Data: 2018:11:26:23:25:39
+Bem vind: João Vitor Rodrigues Baptista
+Matricula: 150013329
+Creditos restantes: 31.2
+------------------------

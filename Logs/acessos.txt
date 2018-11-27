@@ -1,0 +1,30 @@
+
+-------------------------
+Data: 2018:11:26:23:33:10
+Numeros de acessos expirados... : João Vitor Rodrigues Baptista
+Matricula: 150013329
+Creditos: 31.2
+------------------------
+
+-------------------------
+Data: 2018:11:26:23:33:17
+Numeros de acessos expirados... : João Vitor Rodrigues Baptista
+Matricula: 150013329
+Creditos: 31.2
+------------------------
+
+-------------------------
+Data: 2018:11:26:23:33:59
+Bem vindo: João Vitor Rodrigues Baptista
+Matricula: 150013329
+Creditos restantes: 26.0
+Creditos antes: 31.2
+------------------------
+
+-------------------------
+Data: 2018:11:26:23:34:54
+Sem saldo : João Vitor Rodrigues Baptista
+Matricula: 150013329
+Creditos restantes: -5.2
+Creditos: 0.0
+------------------------
