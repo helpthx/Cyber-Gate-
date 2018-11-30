@@ -72,11 +72,11 @@ int main(){
 					system("date");
 					printf("-----------------------------------\n\n");
 					//escrita no log
-					system("echo  >> log_refeicoes.txt");
-					system("echo --------------------------------- >> log_refeicoes.txt");
-					system("echo O Café da manhã foi iniciado às: >> log_refeicoes.txt");
-					system("date  >> log_refeicoes.txt");
-					system("echo --------------------------------- >> log_refeicoes.txt");
+					system("echo  >> Logs/log_refeicoes.txt");
+					system("echo --------------------------------- >> Logs/log_refeicoes.txt");
+					system("echo O Café da manhã foi iniciado às: >> Logs/log_refeicoes.txt");
+					system("date  >> Logs/log_refeicoes.txt");
+					system("echo --------------------------------- >> Logs/log_refeicoes.txt");
 					
 					sleep(5);
 					//system("python3 03_facial.py");
@@ -87,11 +87,11 @@ int main(){
 					system("date");
 					printf("-----------------------------------\n\n");
 					
-					system("echo  >> log_refeicoes.txt");
-					system("echo --------------------------------- >> log_refeicoes.txt");
-					system("echo O Café da manhã foi terminado às: >> log_refeicoes.txt");
-					system("date  >> log_refeicoes.txt");
-					system("echo --------------------------------- >> log_refeicoes.txt");
+					system("echo  >> Logs/log_refeicoes.txt");
+					system("echo --------------------------------- >> Logs/log_refeicoes.txt");
+					system("echo O Café da manhã foi terminado às: >> Logs/log_refeicoes.txt");
+					system("date  >> Logs/log_refeicoes.txt");
+					system("echo --------------------------------- >> Logs/log_refeicoes.txt");
 			       	y = 0;
 		       	break;
 
@@ -102,11 +102,11 @@ int main(){
 					system("date");
 					printf("-----------------------------------\n\n");
 					//escrita no log
-					system("echo  >> log_refeicoes.txt");
-					system("echo --------------------------------- >> log_refeicoes.txt");
-					system("echo O Almoço foi iniciado às: >> log_refeicoes.txt");
-					system("date  >> log_refeicoes.txt");
-					system("echo --------------------------------- >> log_refeicoes.txt");
+					system("echo  >> Logs/log_refeicoes.txt");
+					system("echo --------------------------------- >> Logs/log_refeicoes.txt");
+					system("echo O Almoço foi iniciado às: >> Logs/log_refeicoes.txt");
+					system("date  >> Logs/log_refeicoes.txt");
+					system("echo --------------------------------- >> Logs/log_refeicoes.txt");
 					
 					sleep(5);
 					//system("python3 03_facial.py");
@@ -117,11 +117,11 @@ int main(){
 					system("date");
 					printf("-----------------------------------\n\n");
 					
-					system("echo  >> log_refeicoes.txt");
-					system("echo --------------------------------- >> log_refeicoes.txt");
-					system("echo O Almoço foi terminado às: >> log_refeicoes.txt");
-					system("date  >> log_refeicoes.txt");
-					system("echo --------------------------------- >> log_refeicoes.txt");
+					system("echo  >> Logs/log_refeicoes.txt");
+					system("echo --------------------------------- >> Logs/log_refeicoes.txt");
+					system("echo O Almoço foi terminado às: >> Logs/log_refeicoes.txt");
+					system("date  >> Logs/log_refeicoes.txt");
+					system("echo --------------------------------- >> Logs/log_refeicoes.txt");
 
 			       	y = 0;
 		       	break;
@@ -133,11 +133,11 @@ int main(){
 					system("date");
 					printf("-----------------------------------\n\n");
 					//escrita no log
-					system("echo  >> log_refeicoes.txt");
-					system("echo --------------------------------- >> log_refeicoes.txt");
-					system("echo O Jantar foi iniciado às: >> log_refeicoes.txt");
-					system("date  >> log_refeicoes.txt");
-					system("echo --------------------------------- >> log_refeicoes.txt");
+					system("echo  >> Logs/log_refeicoes.txt");
+					system("echo --------------------------------- >> Logs/log_refeicoes.txt");
+					system("echo O Jantar foi iniciado às: >> Logs/log_refeicoes.txt");
+					system("date  >> Logs/log_refeicoes.txt");
+					system("echo --------------------------------- >> Logs/log_refeicoes.txt");
 					
 					sleep(5);
 					//system("python3 03_facial.py");
@@ -148,11 +148,11 @@ int main(){
 					system("date");
 					printf("-----------------------------------\n\n");
 					
-					system("echo  >> log_refeicoes.txt");
-					system("echo --------------------------------- >> log_refeicoes.txt");
-					system("echo O Jantar foi terminado às: >> log_refeicoes.txt");
-					system("date  >> log_refeicoes.txt");
-					system("echo --------------------------------- >> log_refeicoes.txt");
+					system("echo  >> Logs/log_refeicoes.txt");
+					system("echo --------------------------------- >> Logs/log_refeicoes.txt");
+					system("echo O Jantar foi terminado às: >> Logs/log_refeicoes.txt");
+					system("date  >> Logs/log_refeicoes.txt");
+					system("echo --------------------------------- >> Logs/log_refeicoes.txt");
 
 			       	y = 0;
 			       	break;
