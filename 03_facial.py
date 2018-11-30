@@ -174,7 +174,24 @@ for row in cursor:
     acessos_list.append(int(row[4]))
 
 print("Operação feita com sucesso...");
-conn.close()       
+conn.close()
+
+#Zerar todos os acessos    
+
+conn = sqlite3.connect('/home/pi/Banco_de_dados.db')
+print('\nBanco aberto com sucesso...');
+print('---------------------------')
+        
+conn.execute('UPDATE CADASTROS set ACESSOS = 0');
+conn.commit()
+print('Numero total de colunas atualizadas: ', conn.total_changes)
+if conn.total_changes > 0:
+    print('Alterado com sucesso...')
+else:
+    print('Alguma operação deu errado...')
+
+print('\n')
+conn.close()
 
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 recognizer.read('trainer/trainer.yml')
