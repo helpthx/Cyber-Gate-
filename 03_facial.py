@@ -273,8 +273,9 @@ while True:
 
         id, confidence = recognizer.predict(gray[y:y+h,x:x+w])
         
+        #Sistema de verificação por 5 frames consecutivos.
         # Check if confidence is less them 100 ==> "0" is perfect match
-        if (confidence < 31): #confiabilidade de 70% em cada match de imagem
+        if (confidence < 33): #confiabilidade de 70% em cada match de imagem
             cv2.rectangle(img, (x,y), (x+w,y+h), (0,255,0), 2)
             
             #conversão de valores do banco para a aplicação
@@ -493,7 +494,7 @@ while True:
                 t = t + 1
                 
         #confiabilidade menor do que 70% em cada match de imagem       
-        elif (confidence < 69):
+        elif (confidence < 67):
             cv2.rectangle(img, (x,y), (x+w,y+h), (0,0,255), 2)
             id = 'Desconhecido'
             confidence = "  {0}%".format(round(100 - confidence))
