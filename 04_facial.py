@@ -343,7 +343,7 @@ while True:
                     
                     #Criando o arquivo de logs
                     now = datetime.now()
-                    arq = open('/home/pi/Arquivos/Logs/acessos.txt', 'a')
+                    arq = open('/home/pi/Arquivos/Logs/log_refeicoes.txt', 'a')
                     data = []
                     data.append('\n-------------------------\n')
                     data.append("Data: ")
@@ -398,7 +398,7 @@ while True:
                     
                     #Criando o arquivo de logs
                     now = datetime.now()
-                    arq = open('/home/pi/Arquivos/Logs/acessos.txt', 'a')
+                    arq = open('/home/pi/Arquivos/Logs/log_refeicoes.txt', 'a')
                     data = []
                     data.append('\n-------------------------\n')
                     data.append("Data: ")
@@ -448,7 +448,7 @@ while True:
                     
                     #Criando o arquivo de logs
                     now = datetime.now()
-                    arq = open('/home/pi/Arquivos/Logs/acessos.txt', 'a')
+                    arq = open('/home/pi/Arquivos/Logs/log_refeicoes.txt', 'a')
                     data = []
                     data.append('\n-------------------------\n')
                     data.append("Data: ")
