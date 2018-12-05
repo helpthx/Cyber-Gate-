@@ -300,7 +300,7 @@ while True:
             v = v + 1
             
             #condição em que o usuario terá acesso ao restaurante
-            if (t == 8 and credito_1 >= 0.0 and numero_acessos == 0):
+            if (t == 13 and credito_1 >= 0.0 and numero_acessos == 0):
                 cv2.rectangle(img, (x,y), (x+w,y+h), (0,255,0), 2)
                 id = 'Acesso permitido'
                 iniciar = 1
@@ -311,7 +311,7 @@ while True:
                 Monitor.show()
                                 
                 #Temporalização para travar a tela de monitoramento e abrir o GPIO da placa
-                if(v == 10):
+                if(v == 15):
                     cv2.rectangle(img, (x,y), (x+w,y+h), (0,255,0), 2) #Verde
                     id = 'Acesso permitido'
                     iniciar = 1
@@ -373,9 +373,10 @@ while True:
                     os.system("sudo ./gpio")
                     t = 0
                     v = 0
+                    time.sleep(0.1)
             
             #Condição em que o usuario não terá creditos suficientes para acessar o restaurante.
-            elif(t == 8 and credito_1 < 0.0):
+            elif(t == 13 and credito_1 < 0.0):
                 cv2.rectangle(img, (x,y), (x+w,y+h), (0,0,255), 2) #Vermelho
                 id = 'Sem creditos...'
                 iniciar = 1
@@ -387,13 +388,13 @@ while True:
                 Monitor.show()
                 
                 #Temporalização para travar a tela de monitoramento
-                if(v == 10):
+                if(v == 15):
                     
                     #Printar no console as informações que serão gravas como logs
                     print('Sem saldo ', nome)
                     print('Matricula: ', matricula)
                     print('Creditos restantes: ', credito_1)
-                    print('Creditos: ', credito)
+                    print('Creditos antes: ', credito)
                     print('\n')
                     
                     #Criando o arquivo de logs
@@ -422,24 +423,26 @@ while True:
                     arq.close()
                     
                     #tempo de permanencia da tela de monitoramento 
-                    time.sleep(5)
+                    time.sleep(0.1)
                     t = 0
                     v = 0
+                    time.sleep(5)
             
             #Condição em que o usuario tentou acessar mais vezes que o permitido no restaurante.
-            elif(t == 10 and numero_acessos != 0):
+            elif(t == 13 and numero_acessos != 0):
                 cv2.rectangle(img, (x,y), (x+w,y+h), (0,165,255), 2) #laranjado
                 id = 'Numeros de acessos expirados..'
                 iniciar = 1
                 sem_credito = 0
                 numero_acessos = 1
-                dinheiro_flt = float(credito_1)
+                dinheiro = str(credito)
+                dinheiro_flt = float(credito)
                 ui = Ui_Monitor()
                 ui.setupUi(Monitor)
                 Monitor.show()
                 
                 #Temporalização para travar a tela de monitoramento
-                if(v == 8):
+                if(v == 15):
                     
                     #Printar no console as informações que serão gravas como logs
                     print('Numeros de acessos expirados... ', nome)
@@ -463,10 +466,11 @@ while True:
                     data.append(str(now.minute))
                     data.append(':')
                     data.append(str(now.second))
-                    data.append(str('\nBem vindo: '+nome))
+                    data.append('\nNumeros de acessos expirados..')
+                    data.append(str('\nNome '+nome))
                     data.append(str('\nMatricula: '+matricula))
-                    data.append('\nCreditos restantes: '+str(credito_1))
-                    data.append('\nCreditos antes: '+str(credito))
+                    #data.append('\nCreditos restantes: '+str(credito_1))
+                    data.append('\nCreditos: '+str(credito))
                     data.append('\n------------------------\n')
                     arq.writelines(data)
                     arq.close()
@@ -475,6 +479,7 @@ while True:
                     time.sleep(5)
                     t = 0
                     v = 0
+                    time.sleep(0.1)
                     
             #Condição de incremento de identificação        
             else:
@@ -495,7 +500,7 @@ while True:
                 
         #confiabilidade menor do que 68% em cada match de imagem       
         elif (confidence < 68):
-            cv2.rectangle(img, (x,y), (x+w,y+h), (0,0,255), 2)
+            cv2.rectangle(img, (x,y), (x+w,y+h), (255,0,0), 2)
             id = 'Desconhecido'
             confidence = "  {0}%".format(round(100 - confidence))
             nome = "Aluno"
@@ -533,4 +538,3 @@ while True:
 cam.release()
 cv2.destroyAllWindows()
 sys.exit(app.exec_())
-
