@@ -10,6 +10,10 @@
 É cada vez mais importante o uso de controles de acesso aos mais diferentes ambiente, seja para garantir maior segurança, para restringir acesso a informações sigilosas, para assegurar a integridade de bens ou para simples controle de tempo dos usuários do sistema, tornando-se fundamental a utilização de meios eficientes para a realização desta gestão.
 A partir disso foi observado uma grande ineficiência no sistema de controle do Restaurante Universitário da Faculdade do Gama, em que se observa constantes falhas no sistema e filas enormes. Tornando o objetivo do projeto propor uma solução de controle mais eficiente, que gere um sistema capaz de promover maior comodidade aos usuários do restaurante.</p>
 
+## Video 
+
+[Projeto de reconhecimento facial Cyber Gate.](https://www.youtube.com/watch?v=7Ll_-cENTEQ)
+
 ## Equipe
 João Vitor Rodrigues Baptista 	15/0013329
 
